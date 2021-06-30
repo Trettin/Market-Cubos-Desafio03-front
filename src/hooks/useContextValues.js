@@ -31,7 +31,7 @@ export default function useContextValues() {
 
   async function loadProducts() {
     try {
-      const response = await fetch("http://localhost:8000/products", {
+      const response = await fetch("https://market-cubos.herokuapp.com/products", {
         method: "GET",
         headers: {
           "Content-type": "application/json",
