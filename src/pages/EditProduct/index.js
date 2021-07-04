@@ -44,7 +44,7 @@ export default function EditProduct(props) {
       }
 
       const response = await fetch(
-        `https://market-cubos.herokuapp.com/${productIdEdit}`,
+        `https://market-cubos.herokuapp.com/products/${productIdEdit}`,
         {
           method: "PUT",
           body: JSON.stringify(updatedData),
