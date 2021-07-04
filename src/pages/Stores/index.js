@@ -27,7 +27,7 @@ export default function Stores() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/stores/${data.storeName}`,
+        `https://market-cubos.herokuapp.com/stores/${data.storeName}`,
         {
           method: "GET",
           headers: {
