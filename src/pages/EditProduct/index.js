@@ -62,6 +62,7 @@ export default function EditProduct(props) {
       }
       history.push("/produtos");
     } catch (error) {
+      setLoading(false);
       setError(error.message);
     }
   }
