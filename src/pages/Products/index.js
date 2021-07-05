@@ -15,7 +15,7 @@ export default function Products() {
 
   useEffect(() => {
     loadProducts();
-  }, [user]);
+  }, []);
 
   return (
     <MenuLayout storeName={user.store_name} index={2}>
