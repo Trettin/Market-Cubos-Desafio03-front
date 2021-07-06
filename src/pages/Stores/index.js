@@ -46,6 +46,7 @@ export default function Stores() {
     } catch (error) {
       setError(error.message);
     }
+    reset();
   }
 
   useEffect(() => {
@@ -57,16 +58,6 @@ export default function Stores() {
       clearTimeout(timeout);
     };
   }, [error]);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      reset();
-    }, 3000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [errors]);
 
   return (
     <MenuLayout index={1}>
