@@ -40,6 +40,7 @@ export default function Stores() {
       setLoading(false);
 
       if (responseData.error) {
+        reset();
         return setError(responseData.error);
       }
       setFoundProducts(responseData);
