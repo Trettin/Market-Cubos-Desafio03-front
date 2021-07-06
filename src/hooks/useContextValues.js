@@ -15,11 +15,12 @@ export default function useContextValues() {
   const [productIdEdit, setProductIdEdit] = useState(0);
   const [open, setOpen] = useState(false);
 
-  function login({ token, user }) {
+  function login({ token, user }, callback) {
     setToken(token);
     setPersistedToken(token);
     setPersistedUser(user);
     setUser(user);
+    callback();
   }
 
   function logout() {
@@ -31,13 +32,16 @@ export default function useContextValues() {
 
   async function loadProducts() {
     try {
-      const response = await fetch("https://market-cubos.herokuapp.com/products", {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://market-cubos.herokuapp.com/products",
+        {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const responseData = await response.json();
 

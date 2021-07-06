@@ -40,8 +40,9 @@ export default function Login() {
       if (responseData.error) {
         return setError(responseData.error);
       }
-      login(responseData);
-      history.push("/produtos");
+      login(responseData, () => {
+        history.push("/produtos");
+      });
     } catch (error) {
       setError(error.message);
     }
