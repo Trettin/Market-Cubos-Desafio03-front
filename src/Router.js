@@ -34,7 +34,7 @@ function Routes() {
           <div className="main">
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/lojas" exact component={Stores} />
+              <Route path="/lojas" component={Stores} />
               <Route path="/login" component={Login} />
               <Route path="/cadastro" component={Register} />
               <ProtectedRoutes>
