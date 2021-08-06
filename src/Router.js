@@ -1,5 +1,4 @@
 import "./Routes.css";
-import useContextStates from "./hooks/useContextStates";
 import ContextProvider from "./context/ContextProvider";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -19,10 +18,16 @@ import {
 } from "react-router-dom";
 
 function ProtectedRoutes(props) {
-  const { token } = useContextStates();
-
   return (
-    <Route render={() => (token ? props.children : <Redirect to="/login" />)} />
+    <Route
+      render={() =>
+        localStorage.getItem("TOKEN") ? (
+          props.children
+        ) : (
+          <Redirect to="/produtos" />
+        )
+      }
+    />
   );
 }
 

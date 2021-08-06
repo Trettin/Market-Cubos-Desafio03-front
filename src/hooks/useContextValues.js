@@ -2,14 +2,12 @@ import { useState } from "react";
 import { useLocalStorage, useSetState } from "react-use";
 
 export default function useContextValues() {
-  const [persistedToken, setPersistedToken, removePersistedToken] =
-    useLocalStorage("TOKEN", "");
   const [persistedUser, setPersistedUser, removePersistedUser] =
     useLocalStorage("USER", {});
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [token, setToken] = useState(persistedToken);
+  const [token, setToken] = useState(localStorage.getItem("TOKEN"));
   const [user, setUser] = useSetState(persistedUser);
   const [products, setProducts] = useState([]);
   const [productIdEdit, setProductIdEdit] = useState(0);
@@ -17,7 +15,7 @@ export default function useContextValues() {
 
   function login({ token, user }, callback) {
     setToken(token);
-    setPersistedToken(token);
+    localStorage.setItem("TOKEN", token);
     setPersistedUser(user);
     setUser(user);
     callback();
@@ -25,7 +23,7 @@ export default function useContextValues() {
 
   function logout() {
     setToken("");
-    removePersistedToken();
+    localStorage.clear("TOKEN");
     removePersistedUser();
     setUser({});
   }

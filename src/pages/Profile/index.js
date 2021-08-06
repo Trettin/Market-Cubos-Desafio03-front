@@ -1,4 +1,3 @@
-import useContextStates from "../../hooks/useContextStates";
 import MenuLayout from "../../components/MenuLayout";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
@@ -7,7 +6,7 @@ import useStyles from "./style";
 import { useHistory } from "react-router-dom";
 
 export default function Profile() {
-  const { user } = useContextStates();
+  const user = JSON.parse(localStorage.getItem("USER"));
   const classes = useStyles();
   const history = useHistory();
 
