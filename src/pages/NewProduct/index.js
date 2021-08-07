@@ -24,7 +24,6 @@ export default function NewProduct(props) {
   async function handleNewProduct(data) {
     setError("");
     setLoading(true);
-
     try {
       const updatedData = Object.fromEntries(
         Object.entries(data).filter(([, value]) => value)
@@ -34,14 +33,17 @@ export default function NewProduct(props) {
         updatedData.price = updatedData.price * 100;
       }
 
-      const response = await fetch(`https://market-cubos.herokuapp.com/products`, {
-        method: "POST",
-        body: JSON.stringify(updatedData),
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `https://market-cubos.herokuapp.com/products`,
+        {
+          method: "POST",
+          body: JSON.stringify(updatedData),
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token ?? localStorage.getItem("TOKEN")}`,
+          },
+        }
+      );
       const responseData = await response.json();
       setLoading(false);
 
